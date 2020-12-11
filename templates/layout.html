@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Blog</title>
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1 Align='center'>Ocean - Python, HTML e CSS</h1>
+    <hr>
+
+    <div class="pagina">
+
+        <h1>Flaskr</h1>
+
+            <div class="metanav">
+                {% if not session.logado %}
+                    <a href="{{ url_for('login') }}">login</a>
+                {% else %}
+                    <a href="{{ url_for('logout') }}">logout</a>
+                {% endif %}
+            </div>
+
+            {% for mensagem in get_flashed_messages() %}
+                <div class="flash">{{ mensagem }}</div>
+
+        {% endfor %}
+        {% block corpo %}{% endblock %}
+    </div>
+</body>
+</html>
